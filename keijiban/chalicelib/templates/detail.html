@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block basecontent %}
+<div class="col">
+    <H2>{{ title }}</H2>
+    <HR>
+    <p><font color="red">{{ message }}</font></p>
+    <form action="./" method="post">
+    <p>コメント：<textarea name="comment" rows="4" cols="40">{{ input_comment }}</textarea></p>
+    <p>ハンドル名：<input type="text" name="name" size="40" value="{{ input_name }}"></p>
+    <input type="hidden" name="csrf" value="{{ csrf_token }}">
+    <p><input type="submit" value="書き込み"></p>
+    </form>
+    <HR>
+    <p><a href="../">トップに戻る</a></p>
+    <HR>
+    <div>
+        {% for item in details %}
+            {% if item['disabled'] == False %}
+                <p>{{ item['body'] }}<br><small>{{ item['date'] }}, {{ item['writer'] }}</small></p>
+            {% endif %}
+        {% endfor %}   
+    </div>
+</div>
+
+{% endblock basecontent %}

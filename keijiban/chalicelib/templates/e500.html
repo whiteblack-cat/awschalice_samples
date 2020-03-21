@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+
+{% block basecontent %}
+<div class="col">
+    <H2>エラーが発生しました </H2>
+    <div>予期せぬエラーが発生しました。少し時間を置いてから、再度アクセスしてください。</div>
+    <div>{{ message }}</div>
+</div>
+
+{% endblock basecontent %}

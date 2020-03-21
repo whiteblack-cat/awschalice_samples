@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block basecontent %}
+<div class="col">
+    <H2>スレッド一覧</H2>
+    <B>新しいスレッド作成</B><br />
+    <p><font color="red">{{ message }}</font></p>
+    <form action="./" method="post">
+    <p>タイトル：<input type="text" name="title" size="40" value="{{ input_title }}"></p>
+    <input type="hidden" name="csrf" value="{{ csrf_token }}">
+    <p><input type="submit" value="作成"></p>
+    </form>
+    <HR>
+    <div>
+        {% for item in threads %}
+            {% if item['disabled'] == False %}
+                <p><a href="./{{ item['range'] }}/">{{ item['title'] }}</a></p>
+            {% endif %}
+        {% endfor %}   
+    </div>
+</div>
+
+{% endblock basecontent %}
